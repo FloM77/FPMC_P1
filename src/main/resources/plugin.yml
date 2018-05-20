@@ -1,0 +1,7 @@
+name: fpmc
+version: 1.0
+main: com.gmail.fortniteclipperxd.fpmc.P1
+commands:
+  menu:
+    description: Open P1 menu
+    usage: /menu
