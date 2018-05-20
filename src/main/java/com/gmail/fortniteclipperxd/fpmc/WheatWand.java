@@ -11,8 +11,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 public class WheatWand extends EItem {
-    public WheatWand(String name, Material appearance) {
-        super(name, appearance);
+    public WheatWand() {
+        super("WheatWand", Material.BLAZE_ROD);
         Cooldown = 3000;
         Rename("Wheat Wand");
     }
@@ -25,13 +25,8 @@ public class WheatWand extends EItem {
             @Override
             public void OnHit(ProjectileHitEvent e) {
                 super.OnHit(e);
-                for(int i=-1;i<=1;i++)
-                    for(int ii=-1;ii<=1;ii++) {
-                        for (int iii = -1; iii <= 1; iii++) {
-                            e.getHitBlock().getWorld().getBlockAt(e.getHitBlock().getLocation().add(i, ii, iii)).setType(Material.HAY_BLOCK);
-                        }
-                    }
-                }
+                e.getEntity().getWorld().getBlockAt(e.getEntity().getLocation()).setType(Material.HAY_BLOCK);
+            }
         };
         StartCooldown(e.getPlayer());
     }

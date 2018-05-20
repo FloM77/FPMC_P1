@@ -16,6 +16,7 @@ public class CommandMenu implements CommandExecutor {
 
     static {
         P1Menu.setItem(11, new MenuJumpStick().Physical);
+        P1Menu.setItem(13, new MenuDiamondGenerator().Physical);
     }
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(commandSender instanceof Player)

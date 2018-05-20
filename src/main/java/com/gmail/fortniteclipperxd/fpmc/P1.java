@@ -13,12 +13,20 @@ public class P1 extends JavaPlugin {
     @Override
     public void onEnable() {
         key = new NamespacedKey(this, this.getDescription().getName());
+
+        this.saveDefaultConfig();
+        EBlock.config = this;
+
         this.getCommand("menu").setExecutor(new CommandMenu());
-        new JumpStick("JumpStick", Material.STICK, new String[] {"#S#","#S#","#S#"}, new HashMap<Character, ItemStack>() {{
-                                                                                                                                    put('#', new ItemStack(Material.AIR));
-                                                                                                                                    put('S', new ItemStack(Material.STICK));    }});
-        new CloudBoots("CloudBoots", Material.GOLD_BOOTS);
-        new WheatWand("WheatWand", Material.BLAZE_ROD);
+        new JumpStick(new String[] {"#S#","#S#","#S#"}, new HashMap<Character, ItemStack>()
+        {{
+            put('#', new ItemStack(Material.AIR));
+            put('S', new ItemStack(Material.STICK));
+        }});
+        new CloudBoots();
+        new WheatWand();
+        new BlockDiamondGenerator();
+
         getServer().getPluginManager().registerEvents(new Handler(), this);
         getLogger().info("P1 enabled.");
     }

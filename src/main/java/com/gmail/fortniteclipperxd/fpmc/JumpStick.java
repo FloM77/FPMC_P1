@@ -11,8 +11,8 @@ import java.util.HashMap;
 import static org.bukkit.Bukkit.getLogger;
 
 public class JumpStick extends EItem {
-    public JumpStick(String name, Material appearance, String[] shape, HashMap<Character, ItemStack> IngMap) {
-        super(name, appearance, shape, IngMap);
+    public JumpStick(String[] shape, HashMap<Character, ItemStack> IngMap) {
+        super("JumpStick", Material.STICK, shape, IngMap);
         Cooldown = 3000;
         Rename("Jump Stick");
         InitRecipe();

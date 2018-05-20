@@ -5,8 +5,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 
 public class CloudBoots extends EItem {
-    public CloudBoots(String name, Material appearance) {
-        super(name, appearance);
+    public CloudBoots() {
+        super("CloudBoots", Material.GOLD_BOOTS);
         Cooldown = 6000;
         Rename("Cloud Boots");
     }

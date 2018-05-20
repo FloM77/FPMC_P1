@@ -6,6 +6,8 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -26,9 +28,9 @@ public class Handler implements Listener {
     public void OnLogin(PlayerJoinEvent e)
     {
         getLogger().info(e.getPlayer().getDisplayName() + " Logged in.");
-        EItem.GiveTo(e.getPlayer(), EItem.Search("JumpStick"));
-        EItem.GiveTo(e.getPlayer(), EItem.Search("CloudBoots"));
-        EItem.GiveTo(e.getPlayer(), EItem.Search("WheatWand"));
+        //EItem.GiveTo(e.getPlayer(), EItem.Search("JumpStick"));
+        //EItem.GiveTo(e.getPlayer(), EItem.Search("CloudBoots"));
+        //EItem.GiveTo(e.getPlayer(), EItem.Search("WheatWand"));
     }
 
     @EventHandler
@@ -68,6 +70,28 @@ public class Handler implements Listener {
             {
                 ep.OnHit(e);
             }
+        }
+    }
+    @EventHandler
+    public void OnBlockPlace(BlockPlaceEvent e)
+    {
+        for(EBlock eb : EBlock.All)
+        {
+            if(eb.CompareWithItem(eb, e.getItemInHand()))
+            {
+                eb.PlacedEvent(e);
+            }
+        }
+    }
+
+    @EventHandler
+    public void OnBlockBreak(BlockBreakEvent e)
+    {
+        EBlock logical = EBlock.SearchByLogical(e.getBlock().getLocation());
+        if(logical != null)
+        {
+            logical.BreakEvent(e);
+            e.setCancelled(true);
         }
     }
 
