@@ -1,24 +1,17 @@
-package com.gmail.fortniteclipperxd.fpmc;
+package com.gmail.fortniteclipperxd.fpmc.Items;
 
+import com.gmail.fortniteclipperxd.fpmc.EBase;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.PluginAwareness;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.bukkit.Bukkit.getLogger;
-import static org.bukkit.Bukkit.getServer;
 
 public class EItem extends EBase {
     public int Cooldown = 2000;

@@ -1,14 +1,12 @@
-package com.gmail.fortniteclipperxd.fpmc;
+package com.gmail.fortniteclipperxd.fpmc.Items;
 
+import com.gmail.fortniteclipperxd.fpmc.Items.EItem;
 import org.bukkit.Material;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.util.Vector;
 
 import java.util.HashMap;
-
-import static org.bukkit.Bukkit.getLogger;
 
 public class JumpStick extends EItem {
     public JumpStick(String[] shape, HashMap<Character, ItemStack> IngMap) {

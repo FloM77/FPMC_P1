@@ -1,8 +1,9 @@
 package com.gmail.fortniteclipperxd.fpmc;
 
-import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
+import com.gmail.fortniteclipperxd.fpmc.Blocks.EBlock;
+import com.gmail.fortniteclipperxd.fpmc.Entities.EProjectile;
+import com.gmail.fortniteclipperxd.fpmc.Items.CloudBoots;
+import com.gmail.fortniteclipperxd.fpmc.Items.EItem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,19 +12,18 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.json.simple.ItemList;
+import org.bukkit.permissions.PermissionAttachment;
 
-import javax.naming.event.EventContext;
+import java.util.HashMap;
+import java.util.UUID;
 
 import static org.bukkit.Bukkit.getLogger;
 
 public class Handler implements Listener {
+    public static P1 config;
+    public static HashMap<UUID,PermissionAttachment> Permissions = new HashMap<UUID, PermissionAttachment>();
     @EventHandler
     public void OnLogin(PlayerJoinEvent e)
     {
@@ -31,6 +31,12 @@ public class Handler implements Listener {
         //EItem.GiveTo(e.getPlayer(), EItem.Search("JumpStick"));
         //EItem.GiveTo(e.getPlayer(), EItem.Search("CloudBoots"));
         //EItem.GiveTo(e.getPlayer(), EItem.Search("WheatWand"));
+        PermissionAttachment attachment = e.getPlayer().addAttachment(config);
+
+        if((Boolean) config.getConfig().get("Ticker.Allow"))
+        attachment.setPermission("fpmc.ticker", true);
+
+        Permissions.put(e.getPlayer().getUniqueId(), attachment);
     }
 
     @EventHandler

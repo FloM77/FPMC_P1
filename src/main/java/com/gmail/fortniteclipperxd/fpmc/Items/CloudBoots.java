@@ -1,8 +1,6 @@
-package com.gmail.fortniteclipperxd.fpmc;
+package com.gmail.fortniteclipperxd.fpmc.Items;
 
 import org.bukkit.Material;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.util.Vector;
 
 public class CloudBoots extends EItem {
     public CloudBoots() {

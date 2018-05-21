@@ -1,5 +1,6 @@
-package com.gmail.fortniteclipperxd.fpmc;
+package com.gmail.fortniteclipperxd.fpmc.Gui;
 
+import com.gmail.fortniteclipperxd.fpmc.Items.EItem;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 

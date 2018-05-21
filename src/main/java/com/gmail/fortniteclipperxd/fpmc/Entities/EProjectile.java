@@ -1,4 +1,4 @@
-package com.gmail.fortniteclipperxd.fpmc;
+package com.gmail.fortniteclipperxd.fpmc.Entities;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;

@@ -1,9 +1,14 @@
 package com.gmail.fortniteclipperxd.fpmc;
 
+import com.gmail.fortniteclipperxd.fpmc.Blocks.BlockDiamondGenerator;
+import com.gmail.fortniteclipperxd.fpmc.Blocks.EBlock;
+import com.gmail.fortniteclipperxd.fpmc.Gui.CommandMenu;
+import com.gmail.fortniteclipperxd.fpmc.Items.CloudBoots;
+import com.gmail.fortniteclipperxd.fpmc.Items.JumpStick;
+import com.gmail.fortniteclipperxd.fpmc.Items.WheatWand;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -16,6 +21,7 @@ public class P1 extends JavaPlugin {
 
         this.saveDefaultConfig();
         EBlock.config = this;
+        Handler.config = this;
 
         this.getCommand("menu").setExecutor(new CommandMenu());
         new JumpStick(new String[] {"#S#","#S#","#S#"}, new HashMap<Character, ItemStack>()

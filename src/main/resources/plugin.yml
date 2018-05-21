@@ -5,3 +5,11 @@ commands:
   menu:
     description: Open P1 menu
     usage: /menu
+permissions:
+    fpmc.*:
+        description: Gives access to all fpmc commands
+        children:
+            fpmc.ticker: true
+        fpmc.ticker:
+                description: Allows you to use EBlockTickers
+                default: op

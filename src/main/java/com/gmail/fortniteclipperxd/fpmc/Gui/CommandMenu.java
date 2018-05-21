@@ -1,15 +1,13 @@
-package com.gmail.fortniteclipperxd.fpmc;
+package com.gmail.fortniteclipperxd.fpmc.Gui;
 
+import com.gmail.fortniteclipperxd.fpmc.Gui.MenuDiamondGenerator;
+import com.gmail.fortniteclipperxd.fpmc.Gui.MenuJumpStick;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-
-import static org.bukkit.Bukkit.getLogger;
 
 public class CommandMenu implements CommandExecutor {
     public static Inventory P1Menu = Bukkit.createInventory(null, 27, "Main Menu");

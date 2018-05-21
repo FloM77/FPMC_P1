@@ -38,7 +38,7 @@ public class EBase {
     String[] Shape;
     HashMap<Character, ItemStack> IngMap;
 
-    void InitRecipe()
+    public void InitRecipe()
     {
         ShapedRecipe EItemRecipe = new ShapedRecipe(P1.key, Physical);
         EItemRecipe.shape(Shape);

@@ -1,26 +1,19 @@
-package com.gmail.fortniteclipperxd.fpmc;
+package com.gmail.fortniteclipperxd.fpmc.Blocks;
 
-import org.bukkit.Bukkit;
+import com.gmail.fortniteclipperxd.fpmc.EBase;
+import com.gmail.fortniteclipperxd.fpmc.P1;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.bukkit.Bukkit.getLogger;
-import static org.bukkit.Bukkit.getPluginManager;
-import static org.bukkit.Bukkit.getServer;
-
 public class EBlock extends EBase {
     public HashMap<Location, String> Logical;
+    int NumberPlaced = 0;
     public static ArrayList<EBlock> All = new ArrayList<EBlock>();
     public static P1 config;
 
@@ -35,6 +28,7 @@ public class EBlock extends EBase {
     public void PlacedEvent(BlockPlaceEvent e)
     {
         Logical.put(e.getBlockPlaced().getLocation(), e.getPlayer().getPlayerListName());
+        NumberPlaced++;
 
         SaveState();
     }
@@ -43,6 +37,7 @@ public class EBlock extends EBase {
     {
         e.getBlock().setType(Material.AIR);
         Logical.remove(e.getBlock().getLocation());
+        NumberPlaced--;
 
         SaveState();
     }
@@ -96,16 +91,19 @@ public class EBlock extends EBase {
         }
         config.getConfig().set("World.EBlockState." + Name + ".Locations", listLocations);
         config.getConfig().set("World.EBlockState." + Name + ".Players", listPlayers);
+        config.getConfig().set("World.EBlockState." + Name + ".NumberPlaced", NumberPlaced);
         config.saveConfig();
     }
 
     public HashMap<Location, String> LoadState()
     {
         if(config.getConfig().get("World.EBlockState." + Name + ".Locations") == null ||
-            config.getConfig().get("World.EBlockState." + Name + ".Players") == null) return null;
+            config.getConfig().get("World.EBlockState." + Name + ".Players") == null ||
+            config.getConfig().get("World.EBlockState." + Name + ".NumberPlaced") == null) return null;
         HashMap load = new HashMap<Location, String>();
         ArrayList<Location> locations = (ArrayList<Location>) config.getConfig().get("World.EBlockState." + Name + ".Locations");
         ArrayList<String> players = (ArrayList<String>) config.getConfig().get("World.EBlockState." + Name + ".Players");
+        NumberPlaced = (Integer)config.getConfig().get("World.EBlockState." + Name + ".NumberPlaced");
         for(int i=0;i<locations.size();i++)
         {
             load.put(locations.get(i), players.get(i));
